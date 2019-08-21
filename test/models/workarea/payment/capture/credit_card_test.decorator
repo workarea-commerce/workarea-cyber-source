@@ -1,0 +1,17 @@
+module Workarea
+  decorate Payment::Capture::CreditCardTest, with: :cyber_source do
+    private
+
+    def reference
+      @reference ||= Payment::Transaction.new(
+        amount: 5.to_m,
+        response: ActiveMerchant::Billing::Response.new(
+          true,
+          'Message',
+          {},
+          { authorization: authorization }
+        )
+      )
+    end
+  end
+end

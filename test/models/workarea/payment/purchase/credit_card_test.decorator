@@ -1,0 +1,60 @@
+module Workarea
+  decorate Payment::Purchase::CreditCardTest, with: :cyber_source do
+    def test_complete_does_nothing_if_gateway_storage_fails
+      # cyber_source captures and tokenizes in one call; nullifying this test
+    end
+
+    def test_cancel_voids_with_the_authorization_from_the_transaction
+      transaction.response = ActiveMerchant::Billing::Response.new(
+        true,
+        'Message',
+        {},
+        { authorization:  authorization }
+      )
+
+      operation = Payment::Authorize::CreditCard.new(tender, transaction)
+
+      original_void = operation.gateway.method(:void)
+      operation.gateway.expects(:void)
+        .with(authorization)
+        .returns(original_void.call(authorization))
+
+      operation.cancel!
+    end
+
+    def test_cancel_sets_the_cancellation_params_on_the_transaction
+      transaction.response = ActiveMerchant::Billing::Response.new(
+        true,
+        'Message',
+        {},
+        { authorization: authorization }
+      )
+
+      operation = Payment::Authorize::CreditCard.new(tender, transaction)
+      operation.cancel!
+
+      assert_instance_of(
+        ActiveMerchant::Billing::Response,
+        transaction.cancellation
+      )
+    end
+
+    private
+
+    def tender
+      @tender ||=
+        begin
+          payment.set_address(first_name: 'Ben', last_name: 'Crouse')
+
+          payment.build_credit_card(
+            number: 4111111111111111,
+            month: 1,
+            year: Time.now.year + 1,
+            cvv: 999
+          )
+
+          payment.credit_card
+        end
+    end
+  end
+end

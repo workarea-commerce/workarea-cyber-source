@@ -1,0 +1,8 @@
+inherit_from: .rails-rubocop.yml
+
+AllCops:
+  Exclude:
+    - 'lib/active_merchant/billing/cyber_source_fix.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false

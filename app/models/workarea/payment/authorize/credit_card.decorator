@@ -1,0 +1,45 @@
+module Workarea
+  decorate Payment::Authorize::CreditCard, with: :cyber_source do
+    decorated { delegate :address, to: :tender }
+
+    def initialize(tender, transaction, options = {})
+      super
+      @options = @options.merge(
+        email: email,
+        billing_address: billing_address,
+        order_id: order_id
+      )
+    end
+
+    def complete!
+      return unless Payment::StoreCreditCard.new(tender, options).save!
+
+      transaction.response = handle_active_merchant_errors do
+        gateway.authorize(transaction.amount.cents, tender.token, options)
+      end
+    end
+
+    private
+
+    def order_id
+      tender.payment.id
+    end
+
+    def email
+      return unless tender.profile.present?
+
+      tender.profile.email
+    end
+
+    def billing_address
+      {
+        address1:   address.street,
+        address2:   address.street_2,
+        city:       address.city,
+        state:      address.region,
+        country:    address.country.try(:alpha2),
+        zip:        address.postal_code
+      }
+    end
+  end
+end

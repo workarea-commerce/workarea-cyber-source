@@ -1,0 +1,247 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ics2wstesta.ic3.com/commerce/1.x/transactionProcessor
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+          <s:Header>
+            <wsse:Security s:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+              <wsse:UsernameToken>
+                <wsse:Username>a</wsse:Username>
+                <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">b</wsse:Password>
+              </wsse:UsernameToken>
+            </wsse:Security>
+          </s:Header>
+          <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <requestMessage xmlns="urn:schemas-cybersource-com:transaction-data-1.121">
+              <merchantID>a</merchantID>
+              <merchantReferenceCode>5a84631287c68bf3273e9e32</merchantReferenceCode>
+              <clientLibrary>Ruby Active Merchant</clientLibrary>
+              <clientLibraryVersion>1.77.0</clientLibraryVersion>
+              <clientEnvironment>x86_64-darwin17</clientEnvironment>
+        <billTo>
+          <firstName>Ben</firstName>
+          <lastName>Crouse</lastName>
+          <street1>22 s. 3rd st.</street1>
+          <city>Philadelphia</city>
+          <state>PA</state>
+          <postalCode>19106</postalCode>
+          <country>US</country>
+          <email>bcrouse@weblinc.com</email>
+        </billTo>
+        <purchaseTotals>
+          <currency>USD</currency>
+          <grandTotalAmount>0.00</grandTotalAmount>
+        </purchaseTotals>
+        <card>
+          <accountNumber>4111111111111111</accountNumber>
+          <expirationMonth>01</expirationMonth>
+          <expirationYear>2019</expirationYear>
+          <cardType>001</cardType>
+        </card>
+        <subscription>
+          <paymentMethod>credit card</paymentMethod>
+        </subscription>
+        <recurringSubscriptionInfo>
+          <amount>0.00</amount>
+          <frequency>on-demand</frequency>
+          <approvalRequired>false</approvalRequired>
+        </recurringSubscriptionInfo>
+        <paySubscriptionCreateService run="true"/>
+        <businessRules>
+          <ignoreAVSResult>true</ignoreAVSResult>
+          <ignoreCVResult>true</ignoreCVResult>
+        </businessRules>
+            </requestMessage>
+          </s:Body>
+        </s:Envelope>
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Opnet-Transaction-Trace:
+      - a2_73afe5b5-173f-4385-b2e9-22409521aaba
+      - a2_d663144b-f9cf-4541-820f-50560c65a345
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '1574'
+      Date:
+      - Wed, 14 Feb 2018 16:25:55 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+        <soap:Header>
+        <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><wsu:Timestamp xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="Timestamp-1629994557"><wsu:Created>2018-02-14T16:25:55.124Z</wsu:Created></wsu:Timestamp></wsse:Security></soap:Header><soap:Body><c:replyMessage xmlns:c="urn:schemas-cybersource-com:transaction-data-1.121"><c:merchantReferenceCode>5a84631287c68bf3273e9e32</c:merchantReferenceCode><c:requestID>5186255549796693904010</c:requestID><c:decision>ACCEPT</c:decision><c:reasonCode>100</c:reasonCode><c:requestToken>Ahj/7wSTGSXBCJSeJQqKESDdsxZsG7NpHiS6tedBlJcIPPbB4Clwg89sH6QAfbYZNJMvRiuae3gTkxklwQiUniUKigAA8QjG</c:requestToken><c:purchaseTotals><c:currency>USD</c:currency></c:purchaseTotals><c:ccAuthReply><c:reasonCode>100</c:reasonCode><c:amount>0.00</c:amount><c:authorizationCode>888888</c:authorizationCode><c:avsCode>X</c:avsCode><c:avsCodeRaw>I1</c:avsCodeRaw><c:authorizedDateTime>2018-02-14T16:25:55Z</c:authorizedDateTime><c:processorResponse>100</c:processorResponse><c:reconciliationID>76130734GDKUWNAJ</c:reconciliationID><c:paymentNetworkTransactionID>123456789000000</c:paymentNetworkTransactionID></c:ccAuthReply><c:paySubscriptionCreateReply><c:reasonCode>100</c:reasonCode><c:subscriptionID>5186255549796693904010</c:subscriptionID></c:paySubscriptionCreateReply></c:replyMessage></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Wed, 14 Feb 2018 16:25:55 GMT
+- request:
+    method: post
+    uri: https://ics2wstesta.ic3.com/commerce/1.x/transactionProcessor
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+          <s:Header>
+            <wsse:Security s:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+              <wsse:UsernameToken>
+                <wsse:Username>a</wsse:Username>
+                <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">b</wsse:Password>
+              </wsse:UsernameToken>
+            </wsse:Security>
+          </s:Header>
+          <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <requestMessage xmlns="urn:schemas-cybersource-com:transaction-data-1.121">
+              <merchantID>a</merchantID>
+              <merchantReferenceCode>5a84631287c68bf3273e9e32</merchantReferenceCode>
+              <clientLibrary>Ruby Active Merchant</clientLibrary>
+              <clientLibraryVersion>1.77.0</clientLibraryVersion>
+              <clientEnvironment>x86_64-darwin17</clientEnvironment>
+        <billTo>
+          <street1>22 s. 3rd st.</street1>
+          <city>Philadelphia</city>
+          <state>PA</state>
+          <postalCode>19106</postalCode>
+          <country>US</country>
+          <email>bcrouse@weblinc.com</email>
+        </billTo>
+        <purchaseTotals>
+          <currency>USD</currency>
+          <grandTotalAmount>5.00</grandTotalAmount>
+        </purchaseTotals>
+        <recurringSubscriptionInfo>
+          <subscriptionID>5186255549796693904010</subscriptionID>
+          <amount>0.00</amount>
+          <frequency>on-demand</frequency>
+          <approvalRequired>false</approvalRequired>
+        </recurringSubscriptionInfo>
+        <ccAuthService run="true"/>
+        <ccCaptureService run="true"/>
+        <businessRules>
+          <ignoreAVSResult>true</ignoreAVSResult>
+          <ignoreCVResult>true</ignoreCVResult>
+        </businessRules>
+            </requestMessage>
+          </s:Body>
+        </s:Envelope>
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Opnet-Transaction-Trace:
+      - a2_316fceaa-630b-4eae-bbc3-a2dbd50c81b9
+      - a2_e426295d-b40d-4502-ba64-f5b5abf41307
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '1608'
+      Date:
+      - Wed, 14 Feb 2018 16:25:55 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+        <soap:Header>
+        <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><wsu:Timestamp xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="Timestamp-1786496745"><wsu:Created>2018-02-14T16:25:55.566Z</wsu:Created></wsu:Timestamp></wsse:Security></soap:Header><soap:Body><c:replyMessage xmlns:c="urn:schemas-cybersource-com:transaction-data-1.121"><c:merchantReferenceCode>5a84631287c68bf3273e9e32</c:merchantReferenceCode><c:requestID>5186255553716597504012</c:requestID><c:decision>ACCEPT</c:decision><c:reasonCode>100</c:reasonCode><c:requestToken>Ahj//wSTGSXBDCVKmzgMESDdsxZsWzRtKiTGUei0lJcmCp/IwClyYKn8jaQJ+j7bDJpJl6MVzT24YE5MZJcEMJUqbOAw6Ql4</c:requestToken><c:purchaseTotals><c:currency>USD</c:currency></c:purchaseTotals><c:ccAuthReply><c:reasonCode>100</c:reasonCode><c:amount>5.00</c:amount><c:authorizationCode>888888</c:authorizationCode><c:avsCode>X</c:avsCode><c:avsCodeRaw>I1</c:avsCodeRaw><c:authorizedDateTime>2018-02-14T16:25:55Z</c:authorizedDateTime><c:processorResponse>100</c:processorResponse><c:reconciliationID>76131646JDL2GQ4J</c:reconciliationID><c:ownerMerchantID>a</c:ownerMerchantID></c:ccAuthReply><c:ccCaptureReply><c:reasonCode>100</c:reasonCode><c:requestDateTime>2018-02-14T16:25:55Z</c:requestDateTime><c:amount>5.00</c:amount><c:reconciliationID>76131646JDL2GQ4J</c:reconciliationID></c:ccCaptureReply></c:replyMessage></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Wed, 14 Feb 2018 16:25:55 GMT
+- request:
+    method: post
+    uri: https://ics2wstesta.ic3.com/commerce/1.x/transactionProcessor
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+          <s:Header>
+            <wsse:Security s:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+              <wsse:UsernameToken>
+                <wsse:Username>a</wsse:Username>
+                <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">b</wsse:Password>
+              </wsse:UsernameToken>
+            </wsse:Security>
+          </s:Header>
+          <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <requestMessage xmlns="urn:schemas-cybersource-com:transaction-data-1.121">
+              <merchantID>a</merchantID>
+              <merchantReferenceCode>5a84631287c68bf3273e9e32</merchantReferenceCode>
+              <clientLibrary>Ruby Active Merchant</clientLibrary>
+              <clientLibraryVersion>1.77.0</clientLibraryVersion>
+              <clientEnvironment>x86_64-darwin17</clientEnvironment>
+        <voidService run="true">
+          <voidRequestID>5186255553716597504012</voidRequestID>
+          <voidRequestToken>Ahj//wSTGSXBDCVKmzgMESDdsxZsWzRtKiTGUei0lJcmCp/IwClyYKn8jaQJ+j7bDJpJl6MVzT24YE5MZJcEMJUqbOAw6Ql4</voidRequestToken>
+        </voidService>
+            </requestMessage>
+          </s:Body>
+        </s:Envelope>
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Opnet-Transaction-Trace:
+      - a2_9b677de3-92e5-44f7-b49e-ff38ab5e7ccd
+      - a2_cd264ac1-b4c1-4072-9fcd-ae832091790d
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '1154'
+      Date:
+      - Wed, 14 Feb 2018 16:25:56 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+        <soap:Header>
+        <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><wsu:Timestamp xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="Timestamp-659291515"><wsu:Created>2018-02-14T16:25:56.040Z</wsu:Created></wsu:Timestamp></wsse:Security></soap:Header><soap:Body><c:replyMessage xmlns:c="urn:schemas-cybersource-com:transaction-data-1.121"><c:merchantReferenceCode>5a84631287c68bf3273e9e32</c:merchantReferenceCode><c:requestID>5186255558586717404011</c:requestID><c:decision>ACCEPT</c:decision><c:reasonCode>100</c:reasonCode><c:requestToken>Ahj//wSTGSXBEJM0X3trESDdsxZsWzRtKiTGUei0lJcmCp/IwClwDJnZdaQAfbYZNJMvRiuae3PAnJjJLghhKlTZwGAA4RG8</c:requestToken><c:purchaseTotals><c:currency>USD</c:currency></c:purchaseTotals><c:voidReply><c:reasonCode>100</c:reasonCode><c:requestDateTime>2018-02-14T16:25:55Z</c:requestDateTime><c:amount>5.00</c:amount><c:currency>usd</c:currency></c:voidReply></c:replyMessage></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Wed, 14 Feb 2018 16:25:56 GMT
+recorded_with: VCR 2.9.3

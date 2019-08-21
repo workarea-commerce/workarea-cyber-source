@@ -1,0 +1,1 @@
+Workarea::CyberSource.auto_configure_gateway
