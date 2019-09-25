@@ -1,9 +1,25 @@
 Workarea Cyber Source
 ================================================================================
 
-## Installation
+Getting Started
+--------------------------------------------------------------------------------
 
-### Secrets
+Add the gem to your application's Gemfile:
+
+```ruby
+# ...
+gem 'workarea-cyber_source'
+# ...
+```
+
+Update your application's bundle.
+
+```bash
+cd path/to/application
+bundle
+```
+
+Add your credentials to your `config/secrets.yml`:
 
 ```yaml
 cyber_source:
@@ -14,14 +30,12 @@ cyber_source:
   test: true # ONLY FOR STAGING!! Uses the auth.net sandbox
 ```
 
-Workarea Platform Documentation
+Workarea Commerce Documentation
 --------------------------------------------------------------------------------
 
-See [http://developer.weblinc.com](http://developer.weblinc.com) for Workarea platform documentation.
+See [https://developer.workarea.com](https://developer.workarea.com) for Workarea Commerce documentation.
 
-Copyright & Licensing
+License
 --------------------------------------------------------------------------------
 
-Copyright WebLinc 2017. All rights reserved.
-
-For licensing, contact sales@workarea.com.
+Workarea Cyber Source is released under the [Business Software License](LICENSE)
