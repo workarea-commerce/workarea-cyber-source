@@ -17,16 +17,16 @@ ActiveMerchant::Billing::CyberSourceGateway.class_eval do
   end
 
   def build_void_request(identification, options)
-    order_id, request_id, request_token, action, money, currency  = identification.split(";")
+    order_id, request_id, request_token, action, money, currency = identification.split(";")
     options[:order_id] = order_id
 
-    xml = Builder::XmlMarkup.new :indent => 2
+    xml = Builder::XmlMarkup.new indent: 2
     # normal active merchant only has if capture, but purchases should be the same as captures
     # a pr was submited to active merchant, remove this if it ever gets mergex / fixed upstream
     if action == "capture" || action == "purchase"
       add_void_service(xml, request_id, request_token)
     else
-      add_purchase_data(xml, money, true, options.merge(:currency => currency || default_currency))
+      add_purchase_data(xml, money, true, options.merge(currency: currency || default_currency))
       add_auth_reversal_service(xml, request_id, request_token)
     end
     xml.target!
