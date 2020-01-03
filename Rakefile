@@ -33,13 +33,12 @@ desc "Release version #{Workarea::CyberSource::VERSION} of the gem"
 task :release do
   host = "https://#{ENV['BUNDLE_GEMS__WEBLINC__COM']}@gems.weblinc.com"
 
-  #Rake::Task['workarea:changelog'].execute
-  #system 'git add CHANGELOG.md'
-  #system 'git commit -m "Update CHANGELOG"'
-  #system 'git push origin HEAD'
+  Rake::Task['workarea:changelog'].execute
+  system 'git add CHANGELOG.md'
+  system 'git commit -m "Update CHANGELOG"'
 
   system "git tag -a v#{Workarea::CyberSource::VERSION} -m 'Tagging #{Workarea::CyberSource::VERSION}'"
-  system "git push --tags"
+  system "git push origin HEAD --follow-tags"
 
   system "gem build workarea-cyber_source.gemspec"
   system "gem push workarea-cyber_source-#{Workarea::CyberSource::VERSION}.gem"
